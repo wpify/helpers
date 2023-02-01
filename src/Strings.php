@@ -104,14 +104,14 @@ class Strings {
 	 *
 	 * @return string
 	 */
-	public static function modify_dotenv( string $content, callable $callback ): string {
+	public static function modify_dotenv( string $content, callable $callback, ?callable $preprocess = null ): string {
 		$lines = preg_split( '/\n/', $content );
 
 		foreach ( $lines as $index => $line ) {
 			$line = trim( $line );
 
-			if ( str_starts_with( $line, '# DB_HOST=' ) ) {
-				$line = trim( trim( $line, '# ' ) );
+			if ( $preprocess ) {
+				$line = $preprocess( $line );
 			}
 
 			if ( str_starts_with( $line, '#' ) || empty( $line ) || ! str_contains( $line, '=' ) ) {
