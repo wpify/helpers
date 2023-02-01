@@ -1,0 +1,19 @@
+{
+    "name": "wpify/helpers",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Wpify\\Helpers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WPify",
+            "email": "info@wpify.io"
+        }
+    ],
+    "require": {
+      "ext-iconv": "*"
+    }
+}
